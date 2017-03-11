@@ -1,4 +1,9 @@
 # facebook_update
+Update settings.py:-
+update 2 varibles with your app info
+SOCIAL_AUTH_FACEBOOK_KEY
+SOCIAL_AUTH_FACEBOOK_SECRET
+
 Use for testing facebook app 
 create a virtaul Environment:-
 virtualenv env
