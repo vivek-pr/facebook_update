@@ -1,0 +1,180 @@
+{% extends 'base.html' %}
+
+
+
+ {% block content %}
+<div class="vd_title-section clearfix">
+    <div class="vd_menu vd_navbar-bottom-widget">
+                        <ul>
+                            <li>
+                                <a href="/logout">
+                                    <span class="menu-icon"><i class="fa fa-sign-out">{{user.username}}</i></span>
+                                    <span class="menu-text">Logout</span>
+                                </a>
+
+                            </li>
+                        </ul>
+                    </div>
+            <div class="vd_panel-header">
+                <h4>Tobit Professional Medical Corporation</h4>
+            </div>
+
+
+        </div>
+<div class="panel pb-15">
+                  <div class="panel-heading vd_bg-grey clearfix">
+                    <h2 class="panel-title pull-left" style="font-size: 15px;line-height: 30px vertical-align: middle;">Listing</h2>
+<table class="table table-striped reimburse-table" id="data-tables">
+                          <thead>
+                            <tr>
+
+                        <th><b>SOURCE</b></th>
+                        <th><b>Name</b></th>
+                                <th><b>Address</b></th>
+                                <th><b>Phone</b></th>
+                        <th><b>Rating</b></th>
+                                <th><b>Listed</b></th>
+                                <th><b>Status</b></th>
+                                <th><b>Action</b></th>
+
+
+                            </tr>
+                          </thead>
+                          <tbody>
+
+                             <tr>
+                              <td class="ws-mw">Google</td>
+                                 <td class="ws-mw">{{user.first_name}} {{user.last_name}}</td>
+                                 <td class="ws-mw"></td>
+                                 <td class="ws-mw"></td>
+                                 <td class="ws-mw"></td>
+                                 <td class="ws-mw"></td>
+                                 <td class="ws-mw">{{user.is_active}}</td>
+                                 <td class="ws-mw">
+                                     <a id="Google-Update"
+                                     href="#modal-container-Update" data-toggle="modal" title="Update"
+                                class="pull-right btn btn-sm btn-success disabled">
+                                                    Update
+                                                  </a>
+                                 </td>
+
+
+                        </tr>
+      <tr>
+                              <td class="ws-mw">Yelp</td>
+                                 <td class="ws-mw">{{user.first_name}} {{user.last_name}}</td>
+                                 <td class="ws-mw"></td>
+                                 <td class="ws-mw"></td>
+                                 <td class="ws-mw"></td>
+                                 <td class="ws-mw"></td>
+                                 <td class="ws-mw">{{user.is_active}}</td>
+                                 <td class="ws-mw">
+                                     <a id="Yelp-Update"
+                                     href="#modal-container-Update" data-toggle="modal" title="Update"
+                                class="pull-right btn btn-sm btn-success disabled">
+                                                    Update
+                                                  </a>
+                                 </td>
+                        </tr>
+      <tr>
+                              <td class="ws-mw">Yahoo</td>
+          <td class="ws-mw">{{user.first_name}} {{user.last_name}}</td>
+                                 <td class="ws-mw"></td>
+                                 <td class="ws-mw"></td>
+                                 <td class="ws-mw"></td>
+                                 <td class="ws-mw"></td>
+                                 <td class="ws-mw">{{user.is_active}}</td>
+                                 <td class="ws-mw">
+                                     <a id="Yahoo-Update"
+                                     href="#modal-container-Update" data-toggle="modal" title="Update"
+                                class="pull-right btn btn-sm btn-success disabled">
+                                                    Update
+                                                  </a>
+                                 </td>
+                        </tr>
+      <tr>
+                              <td class="ws-mw">FourSqure</td>
+          <td class="ws-mw">{{user.first_name}} {{user.last_name}}</td>
+                                 <td class="ws-mw"></td>
+                                 <td class="ws-mw"></td>
+                                 <td class="ws-mw"></td>
+                                 <td class="ws-mw"></td>
+                                 <td class="ws-mw">{{user.is_active}}</td>
+                                 <td class="ws-mw">
+                                     <a id="Foursqure-Update"
+                                     href="#modal-container-Update" data-toggle="modal" title="Update"
+                                class="pull-right btn btn-sm btn-success disabled">
+                                                    Update
+                                                  </a>
+                                 </td>
+                        </tr>
+      <tr>
+                              <td class="ws-mw">Facebook</td>
+          <td class="ws-mw">{{user.first_name}} {{user.last_name}}</td>
+                                 <td class="ws-mw"></td>
+                                 <td class="ws-mw"></td>
+                                 <td class="ws-mw"></td>
+                                 <td class="ws-mw"></td>
+                                 <td class="ws-mw">{{user.is_active}}</td>
+                                 <td class="ws-mw">
+                                     <a id="Facebook-Update"
+                                     href="#myModal" data-toggle="modal" title="Update"
+                                class="pull-right btn btn-sm btn-success">
+                                                    Update
+                                                  </a>
+
+                                 </td>
+                        </tr>
+      <tr>
+                              <td class="ws-mw">Twitter</td>
+          <td class="ws-mw">{{user.first_name}} {{user.last_name}}</td>
+                                 <td class="ws-mw"></td>
+                                 <td class="ws-mw"></td>
+                                 <td class="ws-mw"></td>
+                                 <td class="ws-mw"></td>
+                                 <td class="ws-mw">{{user.is_active}}</td>
+                                 <td class="ws-mw">
+                                     <a id="Twitter-Update"
+                                     href="#modal-container-Update" data-toggle="modal" title="Update"
+                                class="pull-right btn btn-sm btn-success disabled">
+                                                    Update
+                                                  </a>
+                                 </td>
+                        </tr>
+
+
+
+
+                        </table>
+                  </div></div>
+
+            </div>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Update Facebook</h4>
+      </div>
+      <div class="modal-body">
+         <form id="process_update" method="post" action="/update/">
+             {% csrf_token %}
+             {{forms}}
+
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+{% endblock content %}
