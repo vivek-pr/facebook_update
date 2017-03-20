@@ -3,19 +3,20 @@ from django.contrib.auth.forms import AdminPasswordChangeForm, PasswordChangeFor
 from django.contrib.auth import update_session_auth_hash
 from django.contrib import messages
 from django.shortcuts import render, redirect
-from django.contrib.auth.models import User
 from social_django.models import UserSocialAuth
 from django.utils import timezone
 from django.contrib.auth.models import User
 from manual_facebook.models import FacebookStatus
 import facebook
-from django.http import HttpResponse
 from forms import FacebookStatusForm
 
 @login_required
 def home(request):
     forms = FacebookStatusForm()
     return render(request, 'home.html', {'forms':forms})
+
+def about(request):
+    return render(request, "about.html")
 
 @login_required
 def settings(request):
@@ -34,6 +35,7 @@ def settings(request):
         })
 
 def update_facebook(request):
+    # import ipdb; ipdb.set_trace()
     user = User.objects.get(id=request.user.id)
     forms = FacebookStatusForm(request.POST)
     if forms.is_valid():
@@ -45,9 +47,15 @@ def update_facebook(request):
                                                  link=None)
         auth = user.social_auth.first()
         graph = facebook.GraphAPI(auth.extra_data['access_token'])
-        graph.put_object('me', 'feed', message=messages)
-        status.publish_timestamp = timezone.now()
-        status.save()
+        try:
+
+            graph.put_object('me', 'feed', message=messages)
+            status.publish_timestamp = timezone.now()
+            status.save()
+        except Exception as ex:
+            print ex
+            link = "https://developers.facebook.com/tools/explorer/1270412293034840?method=GET&path=me%3Ffields%3Did%2Cname&version=v2.8 "
+            return render(request, 'home.html', {'forms': forms, 'link': link})
         forms = FacebookStatusForm()
     return render(request, 'home.html', {'forms': forms})
 
@@ -70,50 +78,3 @@ def password(request):
         else:
             form = PasswordForm(request.user)
         return render(request, 'password.html', {'form': form})
-# def login_page(request):
-#     return render(request, "login.html",{})
-
-
-# def acquire_facebook_oauth_code():
-#     redirect_uri = 'http://localhost:8000/'
-#     attrs = {'client_id': settings.FACEBOOK_APP_ID,
-#              'redirect_uri': redirect_uri,
-#              'scope':'offline_access,publish_stream,manage_pages'}
-#     code_url = 'https://graph.facebook.com/oauth/authorize?%s'  % urllib.urlencode(attrs)
-#     print code_url
-#     return code_url
-#
-#
-# def handle_facebook_redirect(request):
-#     code = request.GET.get('code')
-#
-#     attrs = {'client_id': settings.FACEBOOK_APP_ID,
-#              'client_secret': settings.FACEBOOK_APP_SECRET,
-#              'code': code}
-#     access_token_url = 'https://graph.facebook.com/oauth/access_token?%s' % urllib.urlencode(attrs)
-#
-#     r = requests.get(access_token_url)
-#     access_token = urlparse.parse_qs(r.content)['access_token'][0]
-#
-#     # save the access_token for your user
-#     user_profile = request.user.get_profile()
-#     user_profile.facebook_access_token = access_token
-#     user_profile.save()
-#
-#     return redirect('facebook_succeeded_page')
-#
-#
-# @login_required
-# def share_on_facebook(request):
-#     payload = dict(message= & quot;
-#     Your
-#     fancy
-#     facebook
-#     wall
-#     status & quot;),
-#     access_token = request.user.get_profile().facebook_access_token)
-#
-#     req = requests.post('https://graph.facebook.com/feed', data=payload)
-#
-#
-# return redirect('facebook_share_succeeded_page')

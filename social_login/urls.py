@@ -21,6 +21,7 @@ from manual_facebook import views as core_view
 
 urlpatterns = [
     url(r'^$', core_view.home, name=u'candidate_detail'),
+    url(r'^about/$', core_view.about, name=u'about'),
     url(r'^update/$', core_view.update_facebook, name=u'update'),
     url(r'^settings/$', core_view.settings, name='settings'),
     url(r'^settings/password/$', core_view.password, name='password'),

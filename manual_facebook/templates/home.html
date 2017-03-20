@@ -118,8 +118,8 @@
                                  <td class="ws-mw">{{user.is_active}}</td>
                                  <td class="ws-mw">
                                      <a id="Facebook-Update"
-                                     href="#myModal" data-toggle="modal" title="Update"
-                                class="pull-right btn btn-sm btn-success">
+                                      data-toggle="modal" title="Update"
+                                class="pull-right btn btn-sm btn-success" onclick="myfunction()">
                                                     Update
                                                   </a>
 
@@ -177,4 +177,38 @@
 </div>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+     <script>
+     $( document ).ready(function() {
+     {% if link %}
+{#window.open("{{ link }}", "something", 'width=400,height=400,scrollbars=yes');#}
+     {% endif %}
+});     </script>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1872189683019566',
+      xfbml      : true,
+      version    : 'v2.8'
+    });
+    FB.AppEvents.logPageView();
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+function myfunction() {
+    FB.ui({
+        method: 'share',
+        display: 'popup',
+        href: 'https://developers.facebook.com/docs/',
+    }, function (response) {
+    });
+}
+
+</script>
+
 {% endblock content %}

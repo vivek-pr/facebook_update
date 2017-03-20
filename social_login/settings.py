@@ -25,7 +25,7 @@ SECRET_KEY = 'l($!!#zg_g9*)_13)^ky^cl9vfbyu*7%akjl#@u%8y0x4b!=+9'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['52.32.190.82', 'ec2-52-32-190-82.us-west-2.compute.amazonaws.com']
+ALLOWED_HOSTS = ['52.11.87.62', 'ec2-52-11-87-62.us-west-2.compute.amazonaws.com', 'localhost']
 
 
 # Application definition
@@ -55,8 +55,8 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'social_login.urls'
 
-SOCIAL_AUTH_FACEBOOK_KEY = '1270412293034840'  # App ID
-SOCIAL_AUTH_FACEBOOK_SECRET = '35ec8c63acb8304c6d590e73e14c2f5a'  # App Secret
+SOCIAL_AUTH_FACEBOOK_KEY = '1872189683019566'  # App ID
+SOCIAL_AUTH_FACEBOOK_SECRET = '2a091071603b3073b1fce7677647a72d'  # App Secret
 
 TEMPLATES = [
     {
